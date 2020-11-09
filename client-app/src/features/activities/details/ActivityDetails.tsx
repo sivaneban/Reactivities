@@ -6,12 +6,14 @@ interface IProp {
   activity: IActivity;
   setEditMode: (editMode: boolean) => void;
   setSelectedActivity: (activity: IActivity | null) => void;
+  submitting: boolean;
 }
 
 export const ActivityDetails: React.FC<IProp> = ({
   activity,
   setEditMode,
   setSelectedActivity,
+  submitting,
 }) => {
   return (
     <Card fluid>
@@ -30,6 +32,7 @@ export const ActivityDetails: React.FC<IProp> = ({
       <Card.Content extra>
         <Button.Group widths={2}>
           <Button
+            loading={submitting}
             onClick={() => setEditMode(true)}
             basic
             color="blue"
